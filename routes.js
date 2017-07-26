@@ -8,11 +8,50 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-  res.json({response: 'You sent me a POST request', body: req.body});
+  res.json({
+    response: 'You sent me a POST request',
+    body: req.body
+  });
 });
 
-router.get('/:id', function(req, res) {
-  res.json({response: 'You sent me a GET request for ID:' + req.params.id});
+router.get('/:qID', function(req, res) {
+  res.json({
+    response: 'You sent me a GET request for ID:' + req.params.qID
+  });
+});
+
+router.post('/:qID/answers', function(req, res) {
+  res.json({
+    response: 'You sent me a POST to /answers',
+    questionId: req.params.qID,
+    body: req.body
+  });
+});
+
+router.put('/:qID/answers/:aID', function(req, res) {
+  res.json({
+    response: 'You sent me a PUT request to /answers',
+    questionId: req.params.qID,
+    answerId: req.params.aID,
+    body: req.body
+  });
+});
+
+router.delete('/:qID/answers/:aID', function(req, res) {
+  res.json({
+    response: 'You sent me a DELETE request to /answers',
+    questionId: req.params.qID,
+    answerId: req.params.aID
+  });
+});
+
+router.post('/:qID/answers/:aID/vote-:dir', function(req, res) {
+  res.json({
+    response: 'You sent me a POST request to /vote-' + req.params.dir,
+    questionId: req.params.qID,
+    answerId: req.params.aID,
+    vote: req.params.dir
+  });
 });
 
 module.exports = router;
