@@ -27,9 +27,9 @@ AnswerSchema.method('update', function(updates, callback) {
 
 AnswerSchema.method('vote', function(vote, callback) {
   if (vote === 'up') {
-    this.vote += 1;
+    this.votes += 1;
   } else {
-    this.vote -= 1;
+    this.votes -= 1;
   }
   this.parent().save(callback);
 });

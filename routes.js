@@ -28,7 +28,7 @@ router.param('aID', function(req, res, next, id) {
 });
 
 router.get('/', function(req, res, next) {
-  Question.find({}).sort(createdAt: -1}).exec(function(err, questions) {
+  Question.find({}).sort({createdAt: -1}).exec(function(err, questions) {
     if (err) return next(err);
     res.json(questions);
   });
